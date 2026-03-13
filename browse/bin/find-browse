@@ -1,0 +1,33 @@
+#!/bin/bash
+# Find a usable browse binary without hardcoding the parent skill directory name.
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+LOCAL_BIN="$SCRIPT_DIR/../dist/browse"
+ROOT="$(git rev-parse --show-toplevel 2>/dev/null || true)"
+
+if [ -x "$LOCAL_BIN" ]; then
+  echo "$LOCAL_BIN"
+  exit 0
+fi
+
+if [ -n "$ROOT" ] && [ -d "$ROOT/.claude/skills" ]; then
+  for candidate in "$ROOT"/.claude/skills/*/browse/dist/browse; do
+    if [ -x "$candidate" ]; then
+      echo "$candidate"
+      exit 0
+    fi
+  done
+fi
+
+if [ -d "$HOME/.claude/skills" ]; then
+  for candidate in "$HOME"/.claude/skills/*/browse/dist/browse; do
+    if [ -x "$candidate" ]; then
+      echo "$candidate"
+      exit 0
+    fi
+  done
+fi
+
+echo "ERROR: browse binary not found. Run: cd <skill-dir> && ./setup" >&2
+exit 1

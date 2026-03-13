@@ -1,0 +1,34 @@
+{
+  "name": "t-ai-ltech",
+  "version": "0.0.1",
+  "description": "T-AI-LTech — an agent-neutral engineering stack for TalTech university projects.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "browse": "./browse/dist/browse"
+  },
+  "scripts": {
+    "build": "bun build --compile browse/src/cli.ts --outfile browse/dist/browse",
+    "dev": "bun run browse/src/cli.ts",
+    "server": "bun run browse/src/server.ts",
+    "test": "bun test",
+    "start": "bun run browse/src/server.ts"
+  },
+  "dependencies": {
+    "playwright": "^1.58.2",
+    "diff": "^7.0.0"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "keywords": [
+    "browser",
+    "automation",
+    "playwright",
+    "headless",
+    "cli",
+    "claude",
+    "ai-agent",
+    "devtools"
+  ]
+}
