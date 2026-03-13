@@ -1,6 +1,7 @@
 # T-AI-LTech
 
-**A standalone, agent-neutral engineering stack for TalTech university projects.**
+
+**A standalone, agent-neutral engineering stack for TalTech university projects. Before running check HOWTORUNS.md**
 
 This repository is structured so Codex, Claude Code, Junie, or another coding agent can all work from the same top-level instructions and the same course-specific skill folders.
 
